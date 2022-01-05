@@ -1,8 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import HomeScreen from "../screens/HomeScreen";
-import ChangeScreen from "../screens/ChangeScreen";
+import HeaderNavigator from "./HeaderNavigator";
+import { dir } from "../routes/routes";
 
 const StackNavigator = () => {
   const Stack = createStackNavigator();
@@ -10,14 +10,22 @@ const StackNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false,
         cardStyle: {
-          backgroundColor: "white",
+          backgroundColor: "transparent",
+        },
+        headerTitle: () => <HeaderNavigator />,
+        headerStyle: {
+          shadowColor: "white",
+        },
+        headerTitleAlign: "center",
+        headerTitleStyle: {
+          flex: 1,
         },
       }}
     >
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="ChangeScreen" component={ChangeScreen} />
+      {dir.map((route) => (
+        <Stack.Screen {...route} key={route.name} />
+      ))}
     </Stack.Navigator>
   );
 };
