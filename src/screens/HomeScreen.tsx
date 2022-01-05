@@ -5,7 +5,7 @@ import { routes } from "../routes/routes";
 import { styles } from "../theme/homeTheme";
 
 const HomeScreen = () => {
-  const { charges } = routes;
+  const { charges, changes, transactions, checkPayment } = routes;
 
   return (
     <View style={styles.globalMargin}>
@@ -15,17 +15,17 @@ const HomeScreen = () => {
         <BtnLink
           title="Comprobar pago (P2C)"
           icon="checkmark-done-outline"
-          linkTo="ChangeScreen"
+          linkTo={checkPayment}
         />
         <BtnLink title="Cobrar (C2P)" icon="cash-outline" linkTo={charges} />
       </View>
       <View style={styles.shorcutsContainer}>
-        <BtnLink title="Vueltos" icon="logo-usd" linkTo="ChangeScreen" />
+        <BtnLink title="Vueltos" icon="logo-usd" linkTo={changes} />
 
         <BtnLink
           title="Transacciones"
           icon="reader-outline"
-          linkTo="ChangeScreen"
+          linkTo={transactions}
         />
       </View>
     </View>

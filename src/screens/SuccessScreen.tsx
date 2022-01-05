@@ -13,8 +13,7 @@ const SuccessScreen = () => {
     <Center p={2}>
       <Icon name="checkmark-outline" size={100} color="#16a34a" />
       <Text fontSize="lg" fontWeight="bold">
-        {" "}
-        Compra Aprobada{" "}
+        Transacción Aprobada{" "}
       </Text>
 
       <View width="full" bg="gray.100" my={2} rounded="lg" p={2} shadow={1}>

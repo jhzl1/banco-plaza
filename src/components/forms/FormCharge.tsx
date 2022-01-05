@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Button, Input, Radio, Select, Text, View } from "native-base";
 import { routes } from "../../routes/routes";
-import { Image } from "react-native";
 import { banksOptions } from "../../const/bankOptions";
+import { idOptions } from "../../const/personalIdOptions";
 
 const FormCharge = () => {
   const [service, setService] = useState("");
@@ -17,10 +17,10 @@ const FormCharge = () => {
       <Select
         selectedValue={service}
         minWidth="200"
-        accessibilityLabel="Choose Service"
         placeholder="Seleccione un banco"
         my="2"
         onValueChange={(itemValue) => setService(itemValue)}
+        bg="gray.100"
       >
         {banksOptions.map(({ source, ...rest }) => (
           <Select.Item {...rest} leftIcon={source} />
@@ -33,7 +33,6 @@ const FormCharge = () => {
 
       <Radio.Group
         name="myRadioGroup"
-        accessibilityLabel="favorite number"
         value={value}
         onChange={(nextValue) => {
           setValue(nextValue);
@@ -42,19 +41,25 @@ const FormCharge = () => {
         my={2}
         colorScheme="green"
       >
-        <Radio value="one" mx={1}>
-          V
-        </Radio>
-        <Radio value="two" mx={1}>
-          E
-        </Radio>
-        <Radio value="three" mx={1}>
-          P
-        </Radio>
+        {idOptions.map(({ value, label }) => (
+          <Radio value={value} mx={1} key={value}>
+            {label}
+          </Radio>
+        ))}
       </Radio.Group>
 
-      <Input keyboardType="numeric" placeholder="Cédula de identidad" my="2" />
-      <Input keyboardType="numeric" placeholder="Código de seguridad" my="2" />
+      <Input
+        keyboardType="numeric"
+        placeholder="Cédula de identidad"
+        my="2"
+        bg="gray.100"
+      />
+      <Input
+        keyboardType="numeric"
+        placeholder="Código de seguridad"
+        my="2"
+        bg="gray.100"
+      />
 
       <Button
         onPress={() => navigate(success as never)}
